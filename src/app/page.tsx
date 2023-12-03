@@ -15,7 +15,7 @@ export default function Home() {
           <SearchBar />
         </div>
         <div className="max-w-[300px] w-full">
-          <RecentPages />
+          {/* <RecentPages /> */}
         </div>
       </div>
     </main>
