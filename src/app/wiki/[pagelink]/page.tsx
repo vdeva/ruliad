@@ -23,7 +23,7 @@ export default async function WikiPage({
           </Link>
           <p className="text-sm font-mono">The Generative Encyclopedia</p>
           <div className="max-w-[240px] h-[1.2px] w-full bg-neutral-600 mb-5" />
-          <div className="max-w-[240px] w-full">
+          <div className="max-w-[240px] w-full md:block hidden">
             <RecentPages />
           </div>
         </div>
