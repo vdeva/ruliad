@@ -15,7 +15,7 @@ export default function Home() {
           <p className="text-xl font-mono">The Generative Encyclopedia</p>
           <div className="w-full flex flex-col items-center">
             <Link
-              href={`https://twitter.com/@${process.env.TWITTER_USERNAME}`}
+              href={`https://twitter.com/${process.env.TWITTER_USERNAME}`}
               className="text-md font-mono w-full text-center"
             >
               @onetwoval
