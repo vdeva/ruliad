@@ -6,7 +6,7 @@ import "@/styles/wiki.css";
 export const revalidate = 1;
 
 export async function RecentPages() {
-  const { signal } = new AbortController()
+  const { signal } = new AbortController();
 
   function truncateStr(str: string, maxLength: number): string {
     if (str.length > maxLength) {
@@ -17,7 +17,9 @@ export async function RecentPages() {
   }
 
   // Fetch all page IDs from the sorted set 'pagesByCreation'
-  const recentPageIds = await kv.zrange("pagesByCreation", 0, -1);
+  const recentPageIds = await kv.zrange("pagesByCreation", 0, -1, {
+    rev: true,
+  });
 
   // Initialize an array to hold the fetched pages
   const results: PagePayload[] = [];

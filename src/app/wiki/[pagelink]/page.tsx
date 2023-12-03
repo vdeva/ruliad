@@ -4,6 +4,8 @@ import "@/styles/wiki.css";
 import Image from "next/image";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 export default async function WikiPage({
   params,
 }: {
@@ -22,7 +24,7 @@ export default async function WikiPage({
           <p className="text-sm font-mono">The Generative Encyclopedia</p>
           <div className="max-w-[240px] h-[1.2px] w-full bg-neutral-600 mb-5" />
           <div className="max-w-[240px] w-full">
-            {/* <RecentPages /> */}
+            <RecentPages />
           </div>
         </div>
         <div className="max-w-[900px] flex flex-col w-full">
