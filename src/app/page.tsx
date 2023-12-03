@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
+export const revalidate = 20;
+
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center p-8 w-full">
