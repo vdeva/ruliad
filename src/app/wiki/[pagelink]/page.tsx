@@ -1,8 +1,10 @@
 import { RecentPages } from "@/components/recent-pages";
+import { RecentPagesLoading } from "@/components/recent-pages-loading";
 import { WikiCompletion } from "@/components/wiki-completion";
 import "@/styles/wiki.css";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export const revalidate = 0;
 
@@ -22,9 +24,19 @@ export default async function WikiPage({
             </p>
           </Link>
           <p className="text-sm font-mono">The Generative Encyclopedia</p>
+          <div className="w-full flex flex-col items-center">
+            <Link
+              href={`https://twitter.com/@${process.env.TWITTER_USERNAME}`}
+              className="text-md pb-3 font-mono w-full text-center"
+            >
+              @onetwoval
+            </Link>
+          </div>
           <div className="max-w-[240px] h-[1.2px] w-full bg-neutral-600 mb-5" />
           <div className="max-w-[240px] w-full md:block hidden">
-            <RecentPages />
+            <Suspense fallback={<RecentPagesLoading />}>
+              <RecentPages />
+            </Suspense>
           </div>
         </div>
         <div className="max-w-[900px] flex flex-col w-full">

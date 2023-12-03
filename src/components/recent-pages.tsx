@@ -17,7 +17,7 @@ export async function RecentPages() {
   }
 
   // Fetch all page IDs from the sorted set 'pagesByCreation'
-  const recentPageIds = await kv.zrange("pagesByCreation", 0, -1, {
+  const recentPageIds = await kv.zrange("pagesByCreation", 0, 32, {
     rev: true,
   });
 
