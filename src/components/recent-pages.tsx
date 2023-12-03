@@ -37,7 +37,7 @@ export async function RecentPages() {
       <p className="text-md font-semibold w-full text-center pb-2">New Pages</p>
       {results.map((page, i) => (
         <Link className="text-sm" key={page.id} href={`/wiki/${page.title}`}>
-          • {truncateStr(page.title, 20)}
+          • {truncateStr(page.title, 18)}
         </Link>
       ))}
     </div>
