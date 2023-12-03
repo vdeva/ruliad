@@ -49,7 +49,7 @@ export async function POST() {
       role: "system",
       content: `
 Generate a long fictional wiki page using the wikitext format.
-Make sure the article is really silly and  obviously fake. (And make it hilarious).
+Make sure the article is really silly. (And make it hilarious).
 Base the content of the page as if it were hosted on this link: "https://en.wikipedia.org/wiki/${pagelink}".
 Only output the page contents, do not say/output anything else outside of the raw wiki page content.
 DO NOT wrap the wikitext Fenced Code Blocks like so \`\`\`wikitext \`\`\`. NEVER DO IT.
