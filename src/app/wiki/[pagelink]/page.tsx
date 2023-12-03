@@ -11,8 +11,8 @@ export default async function WikiPage({
 }) {
   return (
     <div className="min-h-screen flex flex-col items-center">
-      <div className="flex flex-row w-full justify-between px-8 pt-12 max-w-[1300px] pb-40">
-        <div className="w-full max-w-[300px] flex flex-col items-center sm:block hidden">
+      <div className="flex flex-col sm:flex-row w-full justify-between px-8 pt-12 max-w-[1300px] pb-40">
+        <div className="w-full max-w-[300px] flex flex-col items-center">
           <Link href={"/"} className="flex flex-row gap-3 items-center">
             <Image src="/wikilogo.svg" alt="wikilogo" width={50} height={50} />
             <p className="max-w-[240px] w-full text-center text-4xl font-mono pt-1 no-underline">
