@@ -48,8 +48,9 @@ export async function POST() {
     {
       role: "system",
       content: `
-Generate a long fictional wiki page using the wikitext format.
-Make sure the article funny as fuck.
+Generate a long wiki page using the wikitext format.
+Drop some funny stuff in the article.
+Make the article really funny in comedy style of Dave Chappelle. (Do not say your are doing it tho and don't make it obvious at all.)
 Base the content of the page as if it were hosted on this link: "https://en.wikipedia.org/wiki/${pagelink}".
 Only output the page contents, do not say/output anything else outside of the raw wiki page content.
 DO NOT wrap the wikitext Fenced Code Blocks like so \`\`\`wikitext \`\`\`. NEVER DO IT.
