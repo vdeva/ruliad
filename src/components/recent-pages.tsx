@@ -3,7 +3,11 @@ import { kv } from "@vercel/kv";
 import Link from "next/link";
 import "@/styles/wiki.css";
 
+export const revalidate = 1;
+
 export async function RecentPages() {
+  const { signal } = new AbortController()
+
   function truncateStr(str: string, maxLength: number): string {
     if (str.length > maxLength) {
       return str.substring(0, maxLength) + "...";
