@@ -20,7 +20,7 @@ export default function Home() {
               href={`https://twitter.com/${process.env.TWITTER_USERNAME}`}
               className="text-md font-mono w-full text-center"
             >
-              @onetwoval
+              @{process.env.TWITTER_USERNAME}
             </Link>
           </div>
         </div>

@@ -29,7 +29,7 @@ export default async function WikiPage({
               href={`https://twitter.com/${process.env.TWITTER_USERNAME}`}
               className="text-md pb-3 font-mono w-full text-center"
             >
-              @onetwoval
+              @{process.env.TWITTER_USERNAME}
             </Link>
           </div>
           <div className="max-w-[240px] h-[1.2px] w-full bg-neutral-600 mb-5" />
