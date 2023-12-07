@@ -41,7 +41,7 @@ export async function RecentPages() {
           key={page.id}
           href={`/wiki/${page.title}`}
         >
-          • {truncateStr(page.title, 18)}
+          • {truncateStr(decodeURIComponent(page.title), 18)}
         </Link>
       ))}
     </div>

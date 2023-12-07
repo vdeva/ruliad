@@ -59,7 +59,9 @@ export default async function WikiPage({ params, searchParams }: Props) {
           </div>
         </div>
         <div className="max-w-[900px] flex flex-col w-full">
-          <p className="text-3xl font-semibold w-full">{params.pagelink}</p>
+          <p className="text-3xl font-semibold w-full">
+            {decodeURIComponent(params.pagelink)}
+          </p>
           <div className="h-[1.2px] w-full bg-neutral-600 mb-5" />
           <WikiCompletion pagelink={params.pagelink} />
         </div>
