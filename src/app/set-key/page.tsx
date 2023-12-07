@@ -95,8 +95,6 @@ export default function AddKey() {
                   disabled={isLoading}
                   type="password"
                   placeholder="sk-xxxxxxxxxxxxxxx"
-                  id="email"
-                  name="email"
                   value={aikey}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     setAikey(event.target.value)
