@@ -18,7 +18,14 @@ const opensans = Open_Sans({
 
 export const metadata: Metadata = {
   title: "Ruliad",
-  description: "The infinite wiki.",
+  description: "The Generative Encyclopedia",
+  openGraph: {
+    images: ["/rldmet.png"],
+  },
+  twitter: {
+    title: "Ruliad",
+    description: "The Generative Encyclopedia",
+  },
 };
 
 export const runtime = "edge";
