@@ -2,17 +2,39 @@ import { RecentPages } from "@/components/recent-pages";
 import { RecentPagesLoading } from "@/components/recent-pages-loading";
 import { WikiCompletion } from "@/components/wiki-completion";
 import "@/styles/wiki.css";
+import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
 export const revalidate = 20;
 
-export default async function WikiPage({
-  params,
-}: {
+type Props = {
   params: { pagelink: string };
-}) {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  // read route params
+
+  // fetch data
+
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: `${params.pagelink.replace("_", " ")} - Ruliad`,
+    metadataBase: new URL("https://ruliad.vercel.app"),
+    openGraph: {
+      images: ["/rldmet.png"],
+    },
+  };
+}
+
+export default async function WikiPage({ params, searchParams }: Props) {
   return (
     <div className="min-h-screen flex flex-col items-center">
       <div className="flex flex-col sm:flex-row w-full justify-between px-8 pt-12 max-w-[1300px] pb-40">

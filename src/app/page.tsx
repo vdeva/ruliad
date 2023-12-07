@@ -15,7 +15,7 @@ export default function Home() {
         <div className="">
           <p className="text-center text-5xl font-mono">Ruliad</p>
           <p className="text-xl font-mono">The Generative Encyclopedia</p>
-          <div className="w-full flex flex-col items-center">
+          {/* <div className="w-full flex flex-col items-center">
             <Link
               target="_blank"
               href={`https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`}
@@ -23,7 +23,7 @@ export default function Home() {
             >
               @{process.env.NEXT_PUBLIC_TWITTER_USERNAME}
             </Link>
-          </div>
+          </div> */}
         </div>
         <div className="max-w-[500px] w-full mb-4">
           <SearchBar />
