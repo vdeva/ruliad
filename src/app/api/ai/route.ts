@@ -119,7 +119,7 @@ ALWAYS put a "See Also" section that links to other wiki pages.
     const res = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages,
-      temperature: 0.7,
+      temperature: 0.9,
       stream: true,
     });
 
