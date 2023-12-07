@@ -27,6 +27,7 @@ export async function generateMetadata(
 
   return {
     title: `${params.pagelink.replace("_", " ")} - Ruliad`,
+    description: "The Generative Encyclopedia",
     metadataBase: new URL("https://ruliad.vercel.app"),
     openGraph: {
       images: ["/rldmet.png"],

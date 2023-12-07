@@ -19,12 +19,9 @@ const opensans = Open_Sans({
 export const metadata: Metadata = {
   title: "Ruliad",
   description: "The Generative Encyclopedia",
+  metadataBase: new URL("https://ruliad.vercel.app"),
   openGraph: {
     images: ["/rldmet.png"],
-  },
-  twitter: {
-    title: "Ruliad",
-    description: "The Generative Encyclopedia",
   },
 };
 
