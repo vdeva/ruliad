@@ -26,7 +26,7 @@ export async function generateMetadata(
   // const previousImages = (await parent).openGraph?.images || []
 
   return {
-    title: `${params.pagelink.replace("_", " ")} - Ruliad`,
+    title: `${decodeURI(params.pagelink)} - Ruliad`,
     description: "The Generative Encyclopedia",
     metadataBase: new URL("https://ruliad.vercel.app"),
     openGraph: {
@@ -59,7 +59,7 @@ export default async function WikiPage({ params, searchParams }: Props) {
           </div>
         </div>
         <div className="max-w-[900px] flex flex-col w-full">
-          <p className="text-3xl font-semibold w-full">
+          <p className="md:text-3xl font-semibold w-full md:text-left text-center">
             {decodeURIComponent(params.pagelink)}
           </p>
           <div className="h-[1.2px] w-full bg-neutral-600 mb-5" />

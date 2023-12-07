@@ -12,7 +12,7 @@ export function SearchBar() {
     e.preventDefault();
     setIsLoading(true);
     if (inputValue.length > 0) {
-      router.push(`/wiki/${inputValue.replace(/ /g, "_")}`);
+      router.push(`/wiki/${encodeURI(inputValue)}`);
     }
   };
 
