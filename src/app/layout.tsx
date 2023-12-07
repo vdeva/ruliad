@@ -1,7 +1,9 @@
+import { Footer } from "@/components/footer";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Libre_Baskerville } from "next/font/google";
 import { Open_Sans } from "next/font/google";
+import Link from "next/link";
 
 const lb = Libre_Baskerville({
   subsets: ["latin"],
@@ -28,7 +30,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${lb.variable} ${opensans.variable}`}>{children}</body>
+      <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+      <body className={`${lb.variable} ${opensans.variable}`}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

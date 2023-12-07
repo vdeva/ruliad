@@ -3,10 +3,22 @@
  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="113.000000pt" height="110.000000pt" viewBox="0 0 113.000000 110.000000"
- preserveAspectRatio="xMidYMid meet">
+ preserveAspectRatio="xMidYMid meet" fill="none">
+<style>
+    /* Default styles (for light mode) */
+    path, circle, rect {
+        fill: #000000; /* black */
+    }
 
+    /* Styles for dark mode */
+    @media (prefers-color-scheme: dark) {
+        path, circle, rect {
+            fill: #ffffff; /* white */
+        }
+    }
+</style>
 <g transform="translate(0.000000,110.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+stroke="none">
 <path d="M545 1081 c9 -8 95 -9 95 0 0 4 -23 7 -51 7 -27 0 -47 -3 -44 -7z"/>
 <path d="M488 1073 c7 -3 16 -2 19 1 4 3 -2 6 -13 5 -11 0 -14 -3 -6 -6z"/>
 <path d="M655 1070 c3 -5 13 -10 21 -10 8 0 12 5 9 10 -3 6 -13 10 -21 10 -8

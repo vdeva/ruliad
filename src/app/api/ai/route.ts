@@ -3,12 +3,35 @@ import { kv } from "@vercel/kv";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { headers } from "next/headers";
 import OpenAI from "openai";
+import jose from "node-jose";
+import { cookies } from "next/headers";
 
 export const runtime = "edge";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const decryptJWE = async (encryptedToken: string, secret: string) => {
+  const keystore = jose.JWK.createKeyStore();
+  const jwkKey = await keystore.add({
+    k: jose.util.base64url.encode(secret),
+    kty: "oct",
+  });
+
+  try {
+    const result = await jose.JWE.createDecrypt(jwkKey).decrypt(encryptedToken);
+    const decryptedPayload = JSON.parse(result.payload.toString());
+
+    // Check for expiration
+    if (
+      decryptedPayload.exp &&
+      decryptedPayload.exp < Math.floor(Date.now() / 1000)
+    ) {
+      return null;
+    }
+
+    return decryptedPayload;
+  } catch (error) {
+    return null;
+  }
+};
 
 function stringToReadableStream(pageContent: string): ReadableStream {
   return new ReadableStream({
@@ -27,13 +50,21 @@ function stringToReadableStream(pageContent: string): ReadableStream {
 }
 
 export async function POST() {
+  const cookieStore = cookies();
+  const aijwe = cookieStore.get("aijwe");
+  if (!process.env.JWE_SECRET) {
+    return new Response("Internal Server Error", {
+      status: 500,
+    });
+  }
   const headersList = headers();
   const pagelink = headersList.get("pagelink");
 
-  if (!pagelink)
+  if (!pagelink) {
     return new Response("Unauthorized", {
       status: 401,
     });
+  }
 
   const pageContent = await kv.hget(
     `page:${generateIdHash(pagelink)}`,
@@ -44,10 +75,33 @@ export async function POST() {
     return new StreamingTextResponse(stringToReadableStream(`${pageContent}`));
   }
 
-  const messages: any = [
-    {
-      role: "system",
-      content: `
+  if (!aijwe?.value) {
+    return new StreamingTextResponse(stringToReadableStream(`setup-your-key`));
+  }
+
+  const decodedaijwe = await decryptJWE(aijwe.value, process.env.JWE_SECRET);
+
+  if (!decodedaijwe) {
+    return new StreamingTextResponse(stringToReadableStream(`setup-your-key`));
+  }
+
+  const { aikey } = decodedaijwe as {
+    aikey: string;
+  };
+
+  if (!aikey || aikey.length < 5 || aikey.length > 200) {
+    return new StreamingTextResponse(stringToReadableStream(`setup-your-key`));
+  }
+
+  try {
+    const openai = new OpenAI({
+      apiKey: aikey,
+    });
+
+    const messages: any = [
+      {
+        role: "system",
+        content: `
 Generate a long wiki page using the wikitext format.
 Make the article satirical and witty with a very condescending tone.
 Base the content of the page as if it were hosted on this link: "https://en.wikipedia.org/wiki/${pagelink}".
@@ -59,31 +113,34 @@ NEVER put images.
 Make sure the infobox has a decent amount of info.
 ALWAYS put a "See Also" section that links to other wiki pages.
 `,
-    },
-  ];
+      },
+    ];
 
-  const res = await openai.chat.completions.create({
-    model: "gpt-4-1106-preview",
-    messages,
-    temperature: 0.7,
-    stream: true,
-  });
+    const res = await openai.chat.completions.create({
+      model: "gpt-4-1106-preview",
+      messages,
+      temperature: 0.7,
+      stream: true,
+    });
 
-  const stream = OpenAIStream(res, {
-    async onCompletion(completion) {
-      const title = pagelink;
-      const id = generateIdHash(pagelink);
-      const createdAt = Date.now();
-      const payload = {
-        id,
-        title,
-        createdAt,
-        content: completion,
-      };
-      await kv.hset(`page:${id}`, payload);
-      await kv.zadd("pagesByCreation", { score: createdAt, member: id });
-    },
-  });
+    const stream = OpenAIStream(res, {
+      async onCompletion(completion) {
+        const title = pagelink;
+        const id = generateIdHash(pagelink);
+        const createdAt = Date.now();
+        const payload = {
+          id,
+          title,
+          createdAt,
+          content: completion,
+        };
+        await kv.hset(`page:${id}`, payload);
+        await kv.zadd("pagesByCreation", { score: createdAt, member: id });
+      },
+    });
 
-  return new StreamingTextResponse(stream);
+    return new StreamingTextResponse(stream);
+  } catch (error) {
+    return new StreamingTextResponse(stringToReadableStream(`setup-your-key`));
+  }
 }

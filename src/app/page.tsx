@@ -9,7 +9,7 @@ export const revalidate = 20;
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center p-8 w-full">
+    <main className="min-h-screen flex flex-col items-center px-8 pt-8 pb-20 w-full">
       <div className="flex flex-col items-center gap-5 mt-8 w-full">
         <Image src="/wikilogo.svg" alt="wikilogo" width={200} height={200} />
         <div className="">
@@ -17,10 +17,11 @@ export default function Home() {
           <p className="text-xl font-mono">The Generative Encyclopedia</p>
           <div className="w-full flex flex-col items-center">
             <Link
-              href={`https://twitter.com/${process.env.TWITTER_USERNAME}`}
+              target="_blank"
+              href={`https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`}
               className="text-md font-mono w-full text-center"
             >
-              @{process.env.TWITTER_USERNAME}
+              @{process.env.NEXT_PUBLIC_TWITTER_USERNAME}
             </Link>
           </div>
         </div>
