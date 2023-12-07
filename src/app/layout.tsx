@@ -1,9 +1,8 @@
 import { Footer } from "@/components/footer";
 import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { Libre_Baskerville } from "next/font/google";
-import { Open_Sans } from "next/font/google";
-import Link from "next/link";
+import { Libre_Baskerville, Open_Sans } from "next/font/google";
 
 const lb = Libre_Baskerville({
   subsets: ["latin"],
@@ -38,6 +37,7 @@ export default function RootLayout({
       <body className={`${lb.variable} ${opensans.variable}`}>
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

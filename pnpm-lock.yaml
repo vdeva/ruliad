@@ -14,6 +14,9 @@ dependencies:
   "@radix-ui/react-slot":
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.41)(react@18.2.0)
+  "@vercel/analytics":
+    specifier: ^1.1.1
+    version: 1.1.1
   "@vercel/kv":
     specifier: ^1.0.0
     version: 1.0.0
@@ -810,6 +813,15 @@ packages:
       }
     dependencies:
       crypto-js: 4.2.0
+    dev: false
+
+  /@vercel/analytics@1.1.1:
+    resolution:
+      {
+        integrity: sha512-+NqgNmSabg3IFfxYhrWCfB/H+RCUOCR5ExRudNG2+pcRehq628DJB5e1u1xqwpLtn4pAYii4D98w7kofORAGQA==,
+      }
+    dependencies:
+      server-only: 0.0.1
     dev: false
 
   /@vercel/kv@1.0.0:
@@ -4412,6 +4424,13 @@ packages:
         integrity: sha512-OPVtf0qmeC7RW+ScVX+7aOS+xoIM7pWcZ0jOWg2aTZigCydgRB04adfteBRbecZnnrO1WuGQ+C3tLeBBzX2zSQ==,
       }
     engines: { node: ">=10" }
+    dev: false
+
+  /server-only@0.0.1:
+    resolution:
+      {
+        integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==,
+      }
     dev: false
 
   /set-function-length@1.1.1:
