@@ -103,7 +103,7 @@ export async function POST() {
         role: "system",
         content: `
 Generate a long wiki page using the markup language called wikitext, also known as wiki markup or wikicode, consisting of the syntax and keywords used by the MediaWiki software to format a page.
-Make the article witty with a very sarcastic and condescending tone and make it not too serious. Go a lil goofy!
+Make the article witty with a somewhat sarcastic and condescending tone and make it not too serious.
 Base the content of the page as if it were hosted on this link: "https://en.wikipedia.org/wiki/${pagelink}".
 Only output the page contents, do not say/output anything else outside of the raw wiki page content.
 DO NOT wrap the wikitext Fenced Code Blocks like so \`\`\`wikitext \`\`\`. NEVER DO IT.
