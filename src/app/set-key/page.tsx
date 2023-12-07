@@ -114,7 +114,7 @@ export default function AddKey() {
                 type="submit"
                 disabled={isLoading}
               >
-                Submit
+                Set Key
               </button>
             </form>
           </div>
