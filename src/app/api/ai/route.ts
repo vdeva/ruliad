@@ -103,7 +103,7 @@ export async function POST() {
         role: "system",
         content: `
 Generate a long wiki page using the wikitext format.
-Make the article satirical and witty with a very condescending tone.
+Make the article witty with a very condescending tone and some jokes here and there.
 Base the content of the page as if it were hosted on this link: "https://en.wikipedia.org/wiki/${pagelink}".
 Only output the page contents, do not say/output anything else outside of the raw wiki page content.
 DO NOT wrap the wikitext Fenced Code Blocks like so \`\`\`wikitext \`\`\`. NEVER DO IT.
