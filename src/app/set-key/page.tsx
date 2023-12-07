@@ -122,8 +122,7 @@ export default function AddKey() {
           </div>
           <div className="flex flex-col items-center mt-8 gap-3">
             <p className="text-xs font-sans text-neutral-400">
-              Your key must be valid and have access to the gpt-4-1106-preview
-              model.
+              Your key must be valid and have access to the gpt-3.5-turbo model.
             </p>
             <p className="text-xs font-sans text-neutral-400">
               Your key will be encrypted and saved locally as a cookie. No
