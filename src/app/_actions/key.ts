@@ -26,6 +26,6 @@ export async function setKey(key: string) {
     .update(JSON.stringify(extendedPayload))
     .final();
 
-  cookies().set("aijwe", aijwe);
+  cookies().set("aijwe", aijwe, { maxAge: expirationTime });
   redirect("/");
 }
