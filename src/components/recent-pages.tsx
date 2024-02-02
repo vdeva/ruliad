@@ -3,8 +3,6 @@ import { kv } from "@vercel/kv";
 import Link from "next/link";
 import "@/styles/wiki.css";
 
-export const revalidate = 20;
-
 export async function RecentPages() {
   const { signal } = new AbortController();
 
