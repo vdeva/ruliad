@@ -89,7 +89,7 @@ export async function POST() {
     aikey: string;
   };
 
-  if (!aikey || aikey.length < 5 || aikey.length > 200) {
+  if (!aikey || aikey.length < 5 || aikey.length > 2000) {
     return new StreamingTextResponse(stringToReadableStream(`setup-your-key`));
   }
 
