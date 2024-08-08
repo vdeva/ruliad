@@ -13,7 +13,7 @@ export default function AddKey() {
   const [isLoading, setIsLoading] = useState(false);
   const [isBadaikey, setIsBadaikey] = useState(false);
 
-  const aikeyRegex = /^.{5,64}$/;
+  const aikeyRegex = /^.{5,2000}$/;
 
   const invalidKey = searchParams.get("invalidkey");
 
