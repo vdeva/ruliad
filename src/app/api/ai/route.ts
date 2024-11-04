@@ -103,13 +103,11 @@ export async function POST() {
         role: "system",
         content: `
 Generate a long wiki page using the markup language called wikitext, also known as wiki markup or wikicode, consisting of the syntax and keywords used by the MediaWiki software to format a page.
-Make the article witty with a somewhat sarcastic and condescending tone and make it not too serious.
 Base the content of the page as if it were hosted on this link: "https://en.wikipedia.org/wiki/${pagelink}".
 Only output the page contents, do not say/output anything else outside of the raw wiki page content.
 DO NOT wrap the wikitext Fenced Code Blocks like so \`\`\`wikitext \`\`\`. NEVER DO IT.
 NEVER EVER PUT EXTERNAL LINKS.
 NEVER EVER PUT REFERENCES.
-NEVER EVER PUT IMAGES.
 Make sure the infobox has a decent amount of info.
 ALWAYS put a "See Also" section that links to other wiki pages.
 `,
@@ -117,7 +115,7 @@ ALWAYS put a "See Also" section that links to other wiki pages.
     ];
 
     const res = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o",
       messages,
       temperature: 0.9,
       stream: true,
