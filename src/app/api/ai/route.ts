@@ -115,7 +115,7 @@ ALWAYS put a "See Also" section that links to other wiki pages.
     ];
 
     const res = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: "chatgpt-4o-latest",
       messages,
       temperature: 0.9,
       stream: true,
